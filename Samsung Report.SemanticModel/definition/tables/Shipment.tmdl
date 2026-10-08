@@ -1,0 +1,35 @@
+table Shipment
+	lineageTag: f938d047-3d89-443a-9dde-957575edeb9a
+
+	column Status
+		lineageTag: c53c37cb-0137-4bfb-b19b-1a097fc9bbf4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Status]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		formatString: 0
+		lineageTag: c73072a2-c9d1-483b-bf5b-9b3a4ed8c499
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Shipment = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Status", STRING,
+				    "Value", INTEGER,
+				    {
+				        {"Shipped", 15},
+				        {"Remaining", 85}
+				    }
+				)
+
+	annotation PBI_Id = 92eb8ac19b124db59c0cd68f97fc4ffe
+

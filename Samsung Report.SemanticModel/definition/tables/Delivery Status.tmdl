@@ -1,0 +1,26 @@
+table 'Delivery Status'
+	lineageTag: 04b3a1aa-3f60-4a66-baf0-7cc8132aadd1
+
+	column Status
+		lineageTag: 206e3472-dc2e-48ca-8721-be6353d640c0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Status]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Delivery Status' = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Status", STRING,
+				    {
+				        {"Delayed"},
+				        {"Delivered"},
+				        {"In Transit"}
+				    }
+				)
+
+	annotation PBI_Id = a5b4989625a0412d94664cfcfce4fe00
+

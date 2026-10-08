@@ -1,0 +1,33 @@
+table 'Unit Selection'
+	lineageTag: b04708f5-4ee9-47aa-8687-7cb673dc3d22
+
+	measure 'Selected Unit' =
+			
+			SELECTEDVALUE(
+			    'Unit Selection'[Unit],
+			    "Millions"
+			)
+		lineageTag: 5387bde9-dc43-49fc-8783-b13e89da7fa0
+
+	column Unit
+		lineageTag: bc2129aa-2ecc-4cd9-a33f-835e9bafbec9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Unit]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Unit Selection' = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Unit", STRING,
+				    {
+				        {"Thousands"},
+				        {"Millions"}
+				    }
+				)
+
+	annotation PBI_Id = ee58d38e37f24256acb52649dd129bca
+

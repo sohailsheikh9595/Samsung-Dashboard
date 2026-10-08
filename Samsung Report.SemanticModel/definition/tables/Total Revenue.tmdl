@@ -1,0 +1,47 @@
+table 'Total Revenue'
+	lineageTag: 76fb099b-1d2f-4091-a523-6a10710685ad
+
+	column 'Total Revenue'
+		lineageTag: b119e86a-d5f6-43ff-982e-678623c7ab30
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Total Revenue Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Total Revenue Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Revenue Fields'
+		isHidden
+		lineageTag: a01d813d-8343-4f44-b1d5-b45155b32e5d
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Total Revenue Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Revenue Order'
+		isHidden
+		formatString: 0
+		lineageTag: 0fbb6320-52e6-421e-82b6-fff7fd9a5507
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Total Revenue' = calculated
+		mode: import
+		source =
+				{
+				    ("Total Revenue", NAMEOF('Measure Table'[Total Revenue]), 0)
+				}
+
+	annotation PBI_Id = 595f6f491ee04aeb9f086b810028eb51
+

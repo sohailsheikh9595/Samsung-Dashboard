@@ -1,0 +1,11 @@
+createOrReplace
+
+	ref table 'Measure Table'
+
+		measure 'Shipment Cost' =
+				
+				SUM(Fact_SupplyChain[Shipment_Cost])
+			lineageTag: d2c30d2f-e891-43ce-823e-ccd887af1619
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+

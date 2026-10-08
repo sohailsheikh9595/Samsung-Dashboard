@@ -1,0 +1,16 @@
+relationship AutoDetected_ca8e0188-3151-4fb8-b75d-a305f317ba67
+	fromColumn: Fact_SupplyChain.Customer_Platform
+	toColumn: Dim_Customer.Customer_Platform
+
+relationship AutoDetected_a3d0c171-e110-401a-ae40-eb9ce2a7b2cf
+	fromColumn: Fact_SupplyChain.Product
+	toColumn: Dim_Product.Product
+
+relationship AutoDetected_3e127583-3b53-4d46-8aa8-21b4778f2c0c
+	fromColumn: Fact_SupplyChain.Supplier
+	toColumn: Dim_Supplier.Supplier
+
+relationship 3643f852-51b4-b4a7-82a7-67f7dae254da
+	fromColumn: Fact_SupplyChain.Shipment_Status
+	toColumn: 'Delivery Status'.Status
+

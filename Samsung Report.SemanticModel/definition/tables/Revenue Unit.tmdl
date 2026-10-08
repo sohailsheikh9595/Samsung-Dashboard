@@ -1,0 +1,44 @@
+table 'Revenue Unit'
+	lineageTag: 92962866-633f-41ef-af54-788bc9c57218
+
+	measure 'Total Revenue Dynamic' =
+			
+			VAR SelectedUnit =
+			    SELECTEDVALUE(
+			        'Revenue Unit'[Unit],
+			        "Millions"
+			    )
+			
+			RETURN
+			    SWITCH(
+			        SelectedUnit,
+			        "Thousands", 'Measure Table'[Total Revenue], 1000,
+			        "Millions", 'Measure Table'[Total Revenue], 1000000,
+			        [Total Revenue]
+			    )
+		lineageTag: bbb212f5-2f61-47df-a2d6-ddc86f5baba5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Unit
+		lineageTag: f905f697-0098-4c28-b3c6-e4d1dde72cb5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Unit]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Revenue Unit' = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Unit", STRING,
+				    {
+				        {"Thousands"},
+				        {"Millions"}
+				    }
+				)
+
+	annotation PBI_Id = a964fb13d76b45d6849356d99369025f
+

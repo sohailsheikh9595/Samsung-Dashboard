@@ -1,0 +1,36 @@
+table 'Cost Type'
+	lineageTag: 968b906c-b8ca-4a76-ac5c-8b648141d2ac
+
+	measure 'Cost Value' =
+			
+			SWITCH(
+			    MAX('Cost Type'[Cost]),
+			    "Shipment Cost", [Shipment Cost],
+			    "Procurement Cost", [Procurement Cost]
+			)
+		lineageTag: 34e97e54-c80c-4e0a-8456-1d04c0a66f7e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Cost
+		lineageTag: 7dbfeb3f-bdde-4f6e-b96e-dcc28d2f1c87
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Cost]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Cost Type' = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Cost", STRING,
+				    {
+				        {"Shipment Cost"},
+				        {"Procurement Cost"}
+				    }
+				)
+
+	annotation PBI_Id = 874b19a968ea48e1a4279c1a8acae0be
+

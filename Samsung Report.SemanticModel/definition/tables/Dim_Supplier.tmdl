@@ -1,0 +1,27 @@
+table Dim_Supplier
+	lineageTag: 2a6784e4-bfcb-45b3-9e4c-782695d12aa6
+
+	column Supplier
+		dataType: string
+		lineageTag: 29357b13-5f7a-4837-9267-3398ae1c035a
+		summarizeBy: none
+		sourceColumn: Supplier
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Supplier = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\danish.mohammed\Documents\samsung_supply_chain_fact_table.xlsx"), null, true),
+				    Dim_Supplier_Sheet = Source{[Item="Dim_Supplier",Kind="Sheet"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Dim_Supplier_Sheet,{{"Column1", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Supplier", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,266 @@
+table Fact_SupplyChain
+	lineageTag: 3f282420-fb47-4e61-8773-437bcfab9629
+
+	measure 'PROFIT SUM' = SUM(Fact_SupplyChain[Profit])
+		lineageTag: 7bff1eae-3907-4418-8838-7c29c970652e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		dataType: int64
+		formatString: 0
+		lineageTag: 5acc69a2-356b-4cbf-8362-f5ee5c8aac5d
+		summarizeBy: sum
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 92a8797f-c146-489b-99b1-15735b2de159
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_No
+		dataType: int64
+		formatString: 0
+		lineageTag: f15f359a-e547-4dbf-9994-cb4cb5be4d34
+		summarizeBy: sum
+		sourceColumn: Month_No
+
+		annotation SummarizationSetBy = Automatic
+
+	column Supplier
+		dataType: string
+		lineageTag: 39240612-3669-403a-a289-14f1ac3c845d
+		summarizeBy: none
+		sourceColumn: Supplier
+
+		annotation SummarizationSetBy = Automatic
+
+	column Manufacturer
+		dataType: string
+		lineageTag: 565e5df5-d3d3-46ae-8db8-cc061dbce40f
+		summarizeBy: none
+		sourceColumn: Manufacturer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: fd16761c-7723-464b-be15-63cd86d3ae58
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product
+		dataType: string
+		lineageTag: b2482524-ca14-40d7-9b6b-a6cebbff122c
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer_Platform
+		dataType: string
+		lineageTag: 738eb69d-b4a8-49c2-bc0e-ee1b7ebd5386
+		summarizeBy: none
+		sourceColumn: Customer_Platform
+
+		annotation SummarizationSetBy = Automatic
+
+	column Warehouse
+		dataType: string
+		lineageTag: f783982e-695e-46fd-af36-66ec417e04a9
+		summarizeBy: none
+		sourceColumn: Warehouse
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shipment_Status
+		dataType: string
+		lineageTag: 329eb173-c34e-4c5c-803f-e040e0f7cb87
+		summarizeBy: none
+		sourceColumn: Shipment_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: b6332462-0bdf-471b-8f6d-0001e4ea7ab8
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order_Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e187ebd-87a4-4a4f-b239-ac578a5ab6b7
+		summarizeBy: sum
+		sourceColumn: Order_Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Delivered_Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a3efafc-f3ff-4061-bf49-bce2aa04248d
+		summarizeBy: sum
+		sourceColumn: Delivered_Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shipment_Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 5591091f-78ef-418f-a7b7-e33d2ba065f1
+		summarizeBy: sum
+		sourceColumn: Shipment_Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Current_Stock_Level
+		dataType: int64
+		formatString: 0
+		lineageTag: 95c66a1a-937d-4952-a7f5-ba993be28ac7
+		summarizeBy: sum
+		sourceColumn: Current_Stock_Level
+
+		annotation SummarizationSetBy = Automatic
+
+	column Safety_Stock
+		dataType: int64
+		formatString: 0
+		lineageTag: 9dc5ffcd-4133-4584-a4b0-323f3a2475c8
+		summarizeBy: sum
+		sourceColumn: Safety_Stock
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit_Cost
+		dataType: double
+		lineageTag: 2105c131-49f2-4c9e-8abd-bb8d6b4a1cd2
+		summarizeBy: sum
+		sourceColumn: Unit_Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Procurement_Cost
+		dataType: double
+		lineageTag: cada2b8a-3073-4e28-b62a-6a4d4b0eafb2
+		summarizeBy: sum
+		sourceColumn: Procurement_Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Shipment_Cost
+		dataType: double
+		lineageTag: 5b9bf442-7766-4b22-ad21-79578d495f99
+		summarizeBy: sum
+		sourceColumn: Shipment_Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Discount_Rate
+		dataType: double
+		lineageTag: 77379edb-0900-4ae3-a301-500ea1221d33
+		summarizeBy: sum
+		sourceColumn: Discount_Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Revenue
+		dataType: double
+		lineageTag: e9883a0d-6355-460b-ad90-9af6c97a97f1
+		summarizeBy: sum
+		sourceColumn: Revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Profit
+		dataType: double
+		lineageTag: 8177e2a4-fdfe-438d-9c2e-1b9f72847f6c
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Profit_Margin
+		dataType: double
+		lineageTag: 12f33739-89f2-46bc-b9b9-7ba54d3dbbc3
+		summarizeBy: sum
+		sourceColumn: Profit_Margin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Lead_Time_Days
+		dataType: double
+		lineageTag: b1ec3899-e19f-4269-a4be-bb3adb6ded47
+		summarizeBy: sum
+		sourceColumn: Lead_Time_Days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Delivery_Days
+		dataType: double
+		lineageTag: e6b76e55-2aeb-45a3-a65a-c9a53c71e768
+		summarizeBy: sum
+		sourceColumn: Delivery_Days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Perfect_Order
+		dataType: int64
+		formatString: 0
+		lineageTag: ae93a240-7e01-4568-8024-b7bc68b36953
+		summarizeBy: sum
+		sourceColumn: Perfect_Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cash_Cycle_Days
+		dataType: double
+		lineageTag: 41bbf03e-c561-440b-8561-87c348e31c9c
+		summarizeBy: sum
+		sourceColumn: Cash_Cycle_Days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fact_SupplyChain = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\danish.mohammed\Documents\samsung_supply_chain_fact_table.xlsx"), null, true),
+				    Fact_SupplyChain_Sheet = Source{[Item="Fact_SupplyChain",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Fact_SupplyChain_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", Int64.Type}, {"Month", type text}, {"Month_No", Int64.Type}, {"Supplier", type text}, {"Manufacturer", type text}, {"Category", type text}, {"Product", type text}, {"Customer_Platform", type text}, {"Warehouse", type text}, {"Shipment_Status", type text}, {"Quantity", Int64.Type}, {"Order_Quantity", Int64.Type}, {"Delivered_Quantity", Int64.Type}, {"Shipment_Quantity", Int64.Type}, {"Current_Stock_Level", Int64.Type}, {"Safety_Stock", Int64.Type}, {"Unit_Cost", type number}, {"Procurement_Cost", type number}, {"Shipment_Cost", type number}, {"Discount_Rate", type number}, {"Revenue", type number}, {"Profit", type number}, {"Profit_Margin", type number}, {"Lead_Time_Days", type number}, {"Delivery_Days", type number}, {"Perfect_Order", Int64.Type}, {"Cash_Cycle_Days", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,47 @@
+table Parameter
+	lineageTag: 8a27fc58-7cb3-42f5-875b-9232170968e9
+
+	column Parameter
+		lineageTag: 2bcf6e4f-e55e-40ed-ad43-6b343b52ea1b
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: 943c28a3-b8d2-42cb-ab9d-d64f662bdc96
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 5db1798e-8655-48a6-9c4d-1e444c792834
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Parameter = calculated
+		mode: import
+		source =
+				{
+				    ("Total Revenue", NAMEOF('Measure Table'[Total Revenue]), 0)
+				}
+
+	annotation PBI_Id = 81df2d0a0f47453b8d5d4275088e6754
+

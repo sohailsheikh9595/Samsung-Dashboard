@@ -1,0 +1,207 @@
+table 'Measure Table'
+	lineageTag: 54767882-c4db-4b5d-aa5f-bc62304c6304
+
+	measure 'Profit Margin %' =
+			
+			DIVIDE(
+			    SUM(Fact_SupplyChain[Profit]),
+			    SUM(Fact_SupplyChain[Revenue]),
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 638c1374-47d5-4ba5-8013-9c92b89903eb
+
+	measure 'Cost Ratio %' =
+			
+			DIVIDE(
+			    SUM(Fact_SupplyChain[Procurement_Cost]),
+			    SUM(Fact_SupplyChain[Revenue]),
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c69f7dea-d387-4a20-a862-7baadbcafa76
+
+	measure 'Cash Cycle Days' =
+			
+			AVERAGE(Fact_SupplyChain[Cash_Cycle_Days])
+		lineageTag: 3df11ff4-5502-4ea3-94e4-2168e063ef5e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Discount Rate %' =
+			
+			AVERAGE(Fact_SupplyChain[Discount_Rate])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e12e3916-e06f-413f-9e6c-19834d44f27d
+
+	measure 'Total Suppliers' =
+			
+			DISTINCTCOUNT(Fact_SupplyChain[Supplier])
+		formatString: 0
+		lineageTag: f2df4b17-2b14-4679-8b76-f700c572e643
+
+	measure 'Total Manufacturers' =
+			
+			DISTINCTCOUNT(Fact_SupplyChain[Manufacturer])
+		formatString: 0
+		lineageTag: c8a5c63f-37fe-4742-b15c-b0a171098b62
+
+	measure 'Selected Shipment Status' =
+			
+			SELECTEDVALUE(
+			    Fact_SupplyChain[Shipment_Status],
+			    "All Shipments"
+			)
+		lineageTag: 2edf6766-3f5c-4c44-85aa-1b2675623792
+
+	measure 'Selected Customer Platform' =
+			
+			SELECTEDVALUE(
+			    Fact_SupplyChain[Customer_Platform],
+			    "All Platforms"
+			)
+		lineageTag: 6f1afe91-25a0-4c02-a413-bb53f1ff0e92
+
+	measure 'Total Order Quantity' =
+			
+			SUM(Fact_SupplyChain[Order_Quantity])
+		formatString: 0
+		lineageTag: bf2bfd7b-df17-4eed-babb-4e92d8f50be2
+
+	measure 'Total Current Stock Level' =
+			
+			SUM(Fact_SupplyChain[Current_Stock_Level])
+		formatString: 0
+		lineageTag: c5dd521f-78a1-41db-a934-7d203c9c9615
+
+	measure 'Total Quantity Shipped' =
+			
+			SUM(Fact_SupplyChain[Shipment_Quantity])
+		formatString: 0
+		lineageTag: 158172aa-c9eb-4f0f-acbd-5fd9e4aff180
+
+	measure 'Total Delivered Quantity' =
+			
+			SUM(Fact_SupplyChain[Delivered_Quantity])
+		formatString: 0
+		lineageTag: 47e2ee92-2b8c-4abc-b886-6787360e99b7
+
+	measure 'Average Lead Time' =
+			
+			AVERAGE(Fact_SupplyChain[Lead_Time_Days])
+		lineageTag: 9a1acdff-f648-402f-92c7-9ffb20af4b2c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Current Stock Level' =
+			
+			SUM(Fact_SupplyChain[Current_Stock_Level])
+		formatString: 0
+		lineageTag: 4a99509e-8614-4417-ada6-d79be6691b89
+
+	measure 'Safety Stock' =
+			
+			SUM(Fact_SupplyChain[Safety_Stock])
+		formatString: 0
+		lineageTag: a612c755-18fa-4ab9-b4d4-e604834f70e0
+
+	measure 'Shipment Cost' =
+			
+			SUM(Fact_SupplyChain[Shipment_Cost])
+		lineageTag: d2c30d2f-e891-43ce-823e-ccd887af1619
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Procurement Cost' =
+			
+			SUM(Fact_SupplyChain[Procurement_Cost])
+		lineageTag: 19485e2e-8b80-4a6b-ba66-9c2bfd576059
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Revenue' =
+			
+			SUM(Fact_SupplyChain[Revenue])
+		lineageTag: 0dd76ed1-923e-4fda-b5d3-a61ab3e656a3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Order Quantity Remaining' =
+			
+			[Order Quantity Target] - [Total Order Quantity]
+		lineageTag: 699844aa-8d79-4943-9e85-a0d7b9dc3897
+
+	measure 'Order Quantity Target' =
+			
+			150000000
+		formatString: 0
+		lineageTag: 43e542ef-8a97-4ac1-8a49-795d4590dee1
+
+	measure 'Stock Remaining' =
+			
+			[Total Current Stock Level] - [Stock Target]
+		formatString: 0
+		lineageTag: 7bc03373-cd89-4073-b189-23d85951b810
+
+	measure 'Stock Target' =
+			
+			150000000
+		formatString: 0
+		lineageTag: d1b8aa8e-8cf8-40ab-8b4d-4f99eb02233f
+
+	measure 'Remaining Shipment Quantity' =
+			
+			ABS(SUM(Fact_SupplyChain[Shipment_Quantity]) - [Total Delivered Quantity])
+		formatString: 0
+		lineageTag: 01bc095e-f5fc-406f-a697-e58abb6e8ccd
+
+	measure Measure
+		lineageTag: 219067a6-14b2-4b0c-9db2-e94a93f079ef
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure Delivered =
+			
+			SUM(Fact_SupplyChain[Delivered_Quantity])
+		formatString: 0
+		lineageTag: f200b586-f9f2-43dd-90d4-531822a3ccad
+
+	measure Remaining =
+			
+			SUM(Fact_SupplyChain[Shipment_Quantity])
+			    - SUM(Fact_SupplyChain[Delivered_Quantity])
+		formatString: 0
+		lineageTag: 114ef7e5-7b2d-4bda-b5d4-5cc731063848
+
+	measure 'Delivery Value' =
+			
+			SWITCH(
+			    MAX('Delivery Status'[Status]),
+			    "Delivered", [Delivered],
+			    "Remaining", [Remaining]
+			)
+		formatString: 0
+		lineageTag: 4ce690ab-6eb7-47aa-96a6-863357d635ce
+
+	column 'Perfect Order Rate %' =
+			
+			AVERAGE(Fact_SupplyChain[Perfect_Order])
+		lineageTag: b70a5090-9241-4d2d-a6a6-61ed139120d1
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Measure Table' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

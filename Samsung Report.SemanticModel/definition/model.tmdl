@@ -1,0 +1,30 @@
+model Model
+	culture: en-IN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Dim_Customer","Dim_Product","Dim_Supplier","Fact_SupplyChain","Measure Table"]
+
+annotation PBI_ProTooling = ["TMDLView_Desktop","DevMode"]
+
+ref table Dim_Customer
+ref table Dim_Product
+ref table Dim_Supplier
+ref table Fact_SupplyChain
+ref table 'Measure Table'
+ref table 'Total Revenue'
+ref table 'Delivery Status'
+ref table Shipment
+ref table 'Cost Type'
+ref table 'Unit Selection'
+ref table Parameter
+ref table 'Revenue Unit'
+
+ref cultureInfo en-IN
+
